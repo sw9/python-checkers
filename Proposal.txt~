@@ -9,4 +9,3 @@ IRC has many benefits over other instant messaging services like Facebook or Wha
 However, IRC has also not been updated to reflect the increasing web based and mobile based world that we live in. Traditional IRC apps that run on your computer disconnect whenever you shutdown your computer or are on the go without an internet connection. In addition, they require that you keep your computer running the whole time if you want to keep logs of the conversations going on in the channels that you are in. These disadvantages are amplified even more on mobile devices where apps that need to constantly run in the background drain your battery and where connectivity can be spotty at times.
 
 This app will let you stay connected to your IRC accounts all day long and access your IRC logs from any device with a web browser. I will be implementing this app using the Django python web development framework.
-
