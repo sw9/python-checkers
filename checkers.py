@@ -307,36 +307,41 @@ class CheckersUI (tk.Frame):
 
 
     def clickBoard(self, event):
-        print(self.turn)
+        
         if noMoveDetection(self.positions, self.turn):
             self.statusLabel["text"] = "No possible moves, you have lost"
+            print("no possible moves")
             self.resignGame()
 
-        jmpDetectLst = jumpDetection(self.positions, self.turn)
-
-        if self.selected == False:
-            ptx, pty = pixelToInt(event.x, event.y)
-
-            if (self.positions[ptx][pty] == None):
-                self.statusLabel["text"] = "No piece selected"
-                return
-            else:
-                if (self.positions[ptx][pty].color != self.turn):
-                    self.statusLabel["text"] = "Wrong color selected"
-                    return
-                else:
-                    s = set(jmpDetectLst)
-                    if len(jmpDetectLst) != 0 and ((ptx, pty) not in s):
-                        self.statusLabel["text"] = "Incorrect selection. You have to jump"
-                        return
-                    else:
-                        self.selected = True
-                        self.selectedPt = (ptx, pty)
-                        self.statusLabel["text"] = str(self.selectedPt) +  " selected"
-                        return
         else:
-            ptx, pty = pixelToInt(event.x, event.y)
-            self.move(ptx, pty)
+            jmpDetectLst = jumpDetection(self.positions, self.turn)
+
+            if self.selected == False:
+                ptx, pty = pixelToInt(event.x, event.y)
+
+                if (self.positions[ptx][pty] == None):
+                    self.statusLabel["text"] = "No piece selected"
+                    print("no pieces selected")
+                
+                else:
+                    if (self.positions[ptx][pty].color != self.turn):
+                        self.statusLabel["text"] = "Wrong color selected"
+                        print("wrong color selected")
+
+                    else:
+                        s = set(jmpDetectLst)
+                        if len(jmpDetectLst) != 0 and ((ptx, pty) not in s):
+                            print("incorrect selection")
+                            self.statusLabel["text"] = "Incorrect selection. You have to jump"
+                        else:
+                            self.selected = True
+                            self.selectedPt = (ptx, pty)
+                            print("selected")
+                            self.statusLabel["text"] = str(self.selectedPt) +  " selected"
+                        
+            else:
+                ptx, pty = pixelToInt(event.x, event.y)
+                self.move(ptx, pty)
     
     def setPlayer1(self):
         
@@ -495,9 +500,13 @@ class CheckersUI (tk.Frame):
         
         if (self.turn == 0):
             self.player1Clock = self.player1Clock - d
-      
+            if (self.player1Clock.days < 0):
+                self.resignGame()
+
         else:
             self.player2Clock = self.player2Clock - d
+            if (self.player2Clock.days < 0):
+                self.resignGame()
 
         hours, remainder = divmod(self.player1Clock.seconds, 3600)
         minutes, seconds = divmod(remainder, 60)
@@ -533,9 +542,13 @@ class CheckersUI (tk.Frame):
             d = time - self.timeNow
 
             if (self.turn == 0):
-                self.player1Clock = self.player1Clock - d      
+                self.player1Clock = self.player1Clock - d 
+                if (self.player1Clock.days < 0):
+                    self.resignGame()
             else:
                 self.player2Clock = self.player2Clock - d
+                if (self.player2Clock.days < 0):
+                    self.resignGame()
 
             hours, remainder = divmod(self.player1Clock.seconds, 3600)
             minutes, seconds = divmod(remainder, 60)

@@ -1,12 +1,12 @@
 Group members:
-
 Shichao Wang
 
 150-400 Word Description:
 
-IRC has many benefits over other instant messaging services like Facebook or Whatsapp. Chief among them is the fact that it is relatively easy to get IRC servers up and running, and that no one company owns the entire experience. Even today, many developers still use IRC to communicate on projects.
+For my final project, I will be making a checkers app in TKinter. This app will be able to validate the moves you make and only allow you to make legal moves. It will not allow you to move pieces into already occupied squares. It will enforce the have to jump rule where you must take a jump if one is available. It will also detect conditions for double jumps and allow you to make these jumps. Finally, it will tell you when you've won or lost.
 
-However, IRC has also not been updated to reflect the increasing web based and mobile based world that we live in. Traditional IRC apps that run on your computer disconnect whenever you shutdown your computer or are on the go without an internet connection. In addition, they require that you keep your computer running the whole time if you want to keep logs of the conversations going on in the channels that you are in. These disadvantages are amplified even more on mobile devices where apps that need to constantly run in the background drain your battery and where connectivity can be spotty at times.
+The app I'll be making will also have two built in timers. When it's a particular player's turn, the timer for that player will count down automatically until he or she makes a move. The time allotted to each player will be determined through two different ways. Each player will get a base amount of time. For each move that they make, they can also receive extra time. There will be an option to just play checkers without time constraints as well.
 
-This app will let you stay connected to your IRC accounts all day long and access your IRC logs from any device with a web browser. I will be implementing this app using the Django python web development framework.
+My app will also allow the players to agree to a draw. Either of the players can offer a draw, and the other player can accept this draw during the next turn. Finally, my app will allow games to be saved to disk to be continued at a later date.
 
+The three modules I plan on using are datetime for the timing functionality, JSON for saving the game to disk, and TKinter for the GUI.
