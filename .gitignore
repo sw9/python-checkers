@@ -1,0 +1,4 @@
+*.pyc
+__pycache__/
+checkers_game_data
+README.html
